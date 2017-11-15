@@ -79,7 +79,7 @@ fn split_ipkg(file: &mut File, index: usize) {
     let entries = len / FILE_TABLE_ENTRY_SIZE;
     println!("Size {} entries {}", len, entries);
     for i in 1..entries {
-        file.seek(SeekFrom::Start(start + FILE_TABLE_ENTRY_SIZE * i))
+        file.seek(SeekFrom::Start(start + FILE_TABLE_START + FILE_TABLE_ENTRY_SIZE * i))
             .expect("seek file");
         extract_ipkg_file(file, start, &dir);
     }
